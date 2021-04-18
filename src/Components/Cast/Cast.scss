@@ -1,0 +1,12 @@
+.cast__list {
+  margin-top: 30px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+.cast__card {
+  width: (800px/4);
+  margin-right: 10px;
+  background-color: #fff;
+  text-align: center;
+}

@@ -1,0 +1,26 @@
+.Movie {
+  &__list {
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+  }
+  &__link {
+    text-align: center;
+    display: inline-block;
+    font-weight: bold;
+    width: 350px;
+    color: black;
+    text-decoration: none;
+    background-color: darkgray;
+    // padding: 7px 20px;
+    border: 1px solid white;
+    &:hover,
+    &:focus {
+      transform: scale(1.07);
+      color: black;
+      background-color: white;
+    }
+  }
+}
