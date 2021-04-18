@@ -3,7 +3,7 @@ const apiKey = '7cce51022f23cd48967f6a8f552940cf';
 
 const fetchTrendingMovies = () => {
   return axios
-    .get(`https://api.themoviedb.org/3/trending/all/week?api_key=${apiKey}`)
+    .get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`)
     .then(({ data }) => data.results);
 };
 
