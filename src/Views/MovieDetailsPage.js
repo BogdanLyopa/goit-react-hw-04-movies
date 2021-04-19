@@ -1,9 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import { NavLink, Route } from 'react-router-dom';
 import api from '../services/moviesApi';
-import Cast from '../Components/Cast/Cast';
-import Reviews from '../Components/Reviews/Reviews';
+import Loader from 'react-loader-spinner';
+
+// import Cast from '../Components/Cast/Cast';
+// import Reviews from '../Components/Reviews/Reviews';
 import './MovieDetailsPage.scss';
+
+const Cast = lazy(() =>
+  import('../Components/Cast/Cast' /* webpackChunkName: "cast" */),
+);
+const Reviews = lazy(() =>
+  import('../Components/Reviews/Reviews' /* webpackChunkName: "cast" */),
+);
 
 export class MovieDetailsPage extends Component {
   state = {
@@ -99,19 +108,21 @@ export class MovieDetailsPage extends Component {
             </NavLink>
           </div>
         </div>
-
-        <Route
-          path={`${this.props.match.url}/cast`}
-          render={props => {
-            return <Cast casts={casts} />;
-          }}
-        />
-        <Route
-          path={`${this.props.match.url}/reviews`}
-          render={props => {
-            return <Reviews reviews={reviews} />;
-          }}
-        />
+        <Suspense fallback={<Loader type="Circles" color="white" />}>
+          {' '}
+          <Route
+            path={`${this.props.match.url}/cast`}
+            render={props => {
+              return <Cast casts={casts} />;
+            }}
+          />
+          <Route
+            path={`${this.props.match.url}/reviews`}
+            render={props => {
+              return <Reviews reviews={reviews} />;
+            }}
+          />
+        </Suspense>
       </>
     );
   }
